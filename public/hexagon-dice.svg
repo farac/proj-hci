@@ -1,0 +1,13 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="hexagon-dice">
+<path id="Polygon" d="M23.7 2.17321C23.8856 2.06603 24.1144 2.06603 24.3 2.17321L42.7526 12.8268C42.9382 12.934 43.0526 13.1321 43.0526 13.3464V34.6536C43.0526 34.8679 42.9382 35.066 42.7526 35.1732L24.3 45.8268C24.1144 45.934 23.8856 45.934 23.7 45.8268L5.24744 35.1732C5.0618 35.066 4.94744 34.8679 4.94744 34.6536V13.3464C4.94744 13.1321 5.0618 12.934 5.24744 12.8268L23.7 2.17321Z" stroke="#719CAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 16" d="M34 30L14 30L24 14L34 30Z" stroke="#719CAC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector 17" d="M5 13L24 14" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 21" d="M5 13L14 30" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 22" d="M43 13L34 30" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 18" d="M43 13.0001L24 14L24 2.00012" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 19" d="M43 35L34 30" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 20" d="M5 35L14 30" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+<path id="Vector 23" d="M14 30L24 46L34 30" stroke="#719CAC" stroke-width="1.5" stroke-linejoin="round"/>
+</g>
+</svg>

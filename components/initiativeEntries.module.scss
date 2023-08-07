@@ -1,0 +1,122 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  list-style-type: none;
+  margin-left: 30px;
+  margin-right: 100px;
+  overflow-x: clip;
+}
+
+.addEntry {
+  @extend .list;
+  border: 1px solid rgba(255, 245, 246, 0.5);
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.instance {
+  display: flex;
+  min-height: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #121a21;
+}
+.instanceCurrent {
+  @extend .instance;
+  border-bottom: 1px solid #fcc81c;
+  border-left: 8px solid #fcc81c;
+}
+
+.initiativeBlock {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 120px;
+
+  color: #fff5f6;
+  text-align: center;
+  font-family: "Exo 2", sans-serif;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 200;
+
+  background: #121a21;
+  display: inline-block;
+  width: 120px;
+  flex-shrink: 0;
+  margin-right: 20px;
+}
+
+.rightsideHolder {
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+  flex: 1;
+}
+
+.nameText {
+  color: #fff5f6;
+  text-align: left;
+  font-family: "Palanquin", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px;
+
+  /*  height: 50%; */
+  flex: 0.5;
+}
+
+.bottomRowHolder {
+  display: flex;
+  flex-direction: row;
+  flex: 0.5;
+}
+
+.healthHolder {
+  display: flex;
+  flex-direction: row;
+}
+
+.hpCurrent {
+  text-align: left;
+  color: #719cac;
+  text-align: center;
+  font-family: Exo 2;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hpCurrentDefault {
+  @extend .hpCurrent;
+  color: #719cac;
+}
+
+.hpCurrentBloodied {
+  @extend .hpCurrent;
+  color: #e25549;
+}
+
+/* note: contains divider "/" as well */
+.hpMax {
+  display: flex;
+  text-align: left;
+  color: #fff5f6;
+  text-align: center;
+  font-family: Palanquin;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+
+  padding-left: 2px;
+  margin-top: 5px;
+}
