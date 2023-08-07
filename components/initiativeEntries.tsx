@@ -5,33 +5,7 @@ import { ReactNode } from "react";
 
 import styles from "@/components/initiativeEntries.module.scss";
 
-const statuses: string[] = ["prone", "deaf", "blind"];
-
-interface ConditionStrings {
-  conditions: string[];
-}
-
-const ConditionToIconMap = {
-  prone: Icons.Prone,
-  deaf: Icons.Deaf,
-  blind: Icons.Blind,
-};
-
-function IconBelt({ conditions }: ConditionStrings) {
-  const conditionsList: ReactNode[] = [];
-  conditions.forEach((condition, index) => {
-    if (statuses.includes(condition))
-      conditionsList.push(
-        <Image
-          key={index}
-          src={ConditionToIconMap[condition as keyof typeof ConditionToIconMap]}
-          alt=""
-        ></Image>
-      );
-  });
-
-  return <div className={styles.iconBelt}>{conditionsList}</div>;
-}
+import IconBelt from "./iconBelt";
 
 export default function IntiativeEntries() {
   const listEntries = e.map((entry) => (

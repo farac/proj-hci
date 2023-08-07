@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 
 import styles from "@/components/iconBelt.module.scss";
 
-const statuses: string[] = ["prone", "deaf", "blind"];
+const statuses: string[] = ["Prone", "Deaf", "Blind"];
 
 interface ConditionStrings {
   conditions: string[];
@@ -22,7 +22,7 @@ export default function IconBelt({ conditions }: ConditionStrings) {
   conditions.forEach((condition, index) => {
     if (statuses.includes(condition))
       conditionsList.push(
-        <Tooltip.Provider>
+        <Tooltip.Provider key={index}>
           <Tooltip.Root>
             <Tooltip.Trigger asChild>
               <Image
@@ -37,7 +37,7 @@ export default function IconBelt({ conditions }: ConditionStrings) {
             </Tooltip.Trigger>
             <Tooltip.Portal>
               <Tooltip.Content className={styles.tooltipContent} sideOffset={5}>
-                Add to library
+                {condition}
                 <Tooltip.Arrow className={styles.tooltipArrow} />
               </Tooltip.Content>
             </Tooltip.Portal>
