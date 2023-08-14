@@ -1,0 +1,106 @@
+{
+    "sessions": [
+        {
+            "session_id": 0,
+            "token": "wadaieh2kj1kj23",
+            "edit_token": "wew89we89e98we78w",
+            "entries": [
+                {
+                    "id": 1,
+                    "initiative_roll": 21,
+                    "is_current_turn": false,
+                    "name": "First Name",
+                    "current_hp": 57,
+                    "max_hp": 60,
+                    "conditions": [
+                        "Blind",
+                        "Prone"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "initiative_roll": 10,
+                    "is_current_turn": true,
+                    "name": "Second of Name",
+                    "current_hp": 21,
+                    "max_hp": 44,
+                    "conditions": [
+                        "Deaf",
+                        "I am custom, consider adding support for me!"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "initiative_roll": 6,
+                    "is_current_turn": false,
+                    "name": "This is a really long name in order to test if it can by doing bla bla lorem ipsum and on and on and on bla bla bla bla bwebadfwadawd",
+                    "current_hp": 236,
+                    "max_hp": 500,
+                    "conditions": [
+                        "Prone"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "initiative_roll": 2,
+                    "is_current_turn": false,
+                    "name": "wert",
+                    "current_hp": 51,
+                    "max_hp": 100,
+                    "conditions": []
+                }
+            ]
+        },
+        {
+            "session_id": 1,
+            "token": "744747474747474",
+            "edit_token": "1231212121212122",
+            "entries": [
+                {
+                    "id": 1,
+                    "initiative_roll": 21,
+                    "is_current_turn": false,
+                    "name": "t Name",
+                    "current_hp": 57,
+                    "max_hp": 60,
+                    "conditions": [
+                        "Blind",
+                        "Prone"
+                    ]
+                },
+                {
+                    "id": 2,
+                    "initiative_roll": 10,
+                    "is_current_turn": true,
+                    "name": "t of Name",
+                    "current_hp": 21,
+                    "max_hp": 44,
+                    "conditions": [
+                        "Deaf",
+                        "I am custom, consider adding support for me!"
+                    ]
+                },
+                {
+                    "id": 3,
+                    "initiative_roll": 6,
+                    "is_current_turn": false,
+                    "name": "Thta bla bla bwebadfwadawd",
+                    "current_hp": 236,
+                    "max_hp": 500,
+                    "conditions": [
+                        "Prone"
+                    ]
+                },
+                {
+                    "id": 4,
+                    "initiative_roll": 2,
+                    "is_current_turn": false,
+                    "name": "wtt",
+                    "current_hp": 51,
+                    "max_hp": 100,
+                    "conditions": []
+                }
+            ]
+        }
+    ]
+}
