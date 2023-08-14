@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useState } from "react";
 import { ref, onValue } from "firebase/database";
 
@@ -12,8 +11,8 @@ export default function HealthHolder({
   sessionId: number;
   entryId: number;
 }) {
-  const [currentHp, setCurrentHp] = useState(0);
-  const [maxHp, setMaxHp] = useState(1);
+  const [currentHp, setCurrentHp] = useState<number>(0);
+  const [maxHp, setMaxHp] = useState<number>(1);
 
   useEffect(() => {
     const currentHpRef = ref(
