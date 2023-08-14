@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import e from "../constants/entries.json";
 import Icons from "../public/conditions/importCondIcons";
@@ -19,10 +20,8 @@ export default function IntiativeEntries() {
       <div className={styles.rightsideHolder}>
         <p className={styles.nameText}>{entry.name}</p>
         <div className={styles.bottomRowHolder}>
-          <HealthHolder
-            currentHp={entry.current_hp}
-            maxHp={entry.max_hp}
-          ></HealthHolder>
+          {/* todo: change me */}
+          <HealthHolder sessionId={0} entryId={entry.id}></HealthHolder>
           <IconBelt conditions={entry.conditions}></IconBelt>
         </div>
       </div>
