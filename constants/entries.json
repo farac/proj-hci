@@ -1,6 +1,6 @@
 [
     {
-        "id": 1,
+        "id": 0,
         "initiative_roll": 21,
         "is_current_turn": false,
         "name": "First Name",
@@ -12,7 +12,7 @@
         ]
     },
     {
-        "id": 2,
+        "id": 1,
         "initiative_roll": 10,
         "is_current_turn": true,
         "name": "Second of Name",
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "id": 3,
+        "id": 2,
         "initiative_roll": 6,
         "is_current_turn": false,
         "name": "This is a really long name in order to test if it can by doing bla bla lorem ipsum and on and on and on bla bla bla bla bwebadfwadawd",
@@ -35,7 +35,7 @@
         ]
     },
     {
-        "id": 4,
+        "id": 3,
         "initiative_roll": 2,
         "is_current_turn": false,
         "name": "wert",

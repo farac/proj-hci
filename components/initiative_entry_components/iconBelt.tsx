@@ -1,9 +1,11 @@
 import Image from "next/image";
-import Icons from "../../public/conditions/importCondIcons";
+import { ReactNode, useEffect, useState } from "react";
+import { ref, onValue } from "firebase/database";
 import * as Tooltip from "@radix-ui/react-tooltip";
-import { ReactNode } from "react";
 
+import Icons from "../../public/conditions/importCondIcons";
 import styles from "@/components/initiative_entry_components/iconBelt.module.scss";
+import { database } from "@/firebaseConfig";
 
 const statuses: string[] = ["Prone", "Deaf", "Blind"];
 
@@ -19,6 +21,7 @@ const ConditionToIconMap = {
 
 export default function IconBelt({ conditions }: ConditionStrings) {
   const conditionsList: ReactNode[] = [];
+
   conditions.forEach((condition, index) => {
     if (statuses.includes(condition))
       conditionsList.push(
