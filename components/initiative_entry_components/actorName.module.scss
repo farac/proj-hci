@@ -1,0 +1,16 @@
+.nameText {
+  color: #fff5f6;
+  text-align: left;
+  font-family: "Palanquin", sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0px;
+
+  /*  height: 50%; */
+  flex: 0.5;
+}

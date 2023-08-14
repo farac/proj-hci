@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import e from "../constants/entries.json";
 import Icons from "../public/conditions/importCondIcons";
@@ -7,6 +6,8 @@ import styles from "@/components/initiativeEntries.module.scss";
 
 import IconBelt from "./initiative_entry_components/iconBelt";
 import HealthHolder from "./initiative_entry_components/healthHolder";
+import InitiativeBlock from "./initiative_entry_components/initiativeBlock";
+import ActorName from "./initiative_entry_components/actorName";
 
 export default function IntiativeEntries() {
   const listEntries = e.map((entry) => (
@@ -16,13 +17,13 @@ export default function IntiativeEntries() {
         entry.is_current_turn ? styles.instanceCurrent : styles.instance
       }
     >
-      <p className={styles.initiativeBlock}>{entry.initiative_roll}</p>
+      <InitiativeBlock sessionId={0} entryId={entry.id}></InitiativeBlock>
       <div className={styles.rightsideHolder}>
-        <p className={styles.nameText}>{entry.name}</p>
+        <ActorName sessionId={0} entryId={entry.id}></ActorName>
         <div className={styles.bottomRowHolder}>
           {/* todo: change me */}
           <HealthHolder sessionId={0} entryId={entry.id}></HealthHolder>
-          <IconBelt conditions={entry.conditions}></IconBelt>
+          <IconBelt sessionId={0} entryId={entry.id}></IconBelt>
         </div>
       </div>
     </li>
