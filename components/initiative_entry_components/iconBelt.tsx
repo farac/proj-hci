@@ -1,9 +1,9 @@
 import Image from "next/image";
-import Icons from "../public/conditions/importCondIcons";
+import Icons from "../../public/conditions/importCondIcons";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { ReactNode } from "react";
 
-import styles from "@/components/iconBelt.module.scss";
+import styles from "@/components/initiative_entry_components/iconBelt.module.scss";
 
 const statuses: string[] = ["Prone", "Deaf", "Blind"];
 

@@ -1,0 +1,41 @@
+.healthHolder {
+  display: flex;
+  flex-direction: row;
+}
+
+.hpCurrent {
+  text-align: left;
+  color: #719cac;
+  text-align: center;
+  font-family: Exo 2;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.hpCurrentDefault {
+  @extend .hpCurrent;
+  color: #719cac;
+}
+
+.hpCurrentBloodied {
+  @extend .hpCurrent;
+  color: #e25549;
+}
+
+/* note: contains divider "/" as well */
+.hpMax {
+  display: flex;
+  text-align: left;
+  color: #fff5f6;
+  text-align: center;
+  font-family: Palanquin;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+
+  padding-left: 2px;
+  margin-top: 5px;
+}
