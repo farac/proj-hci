@@ -7,6 +7,7 @@
   outline: none;
   background-color: #1a252f;
   border: none;
+  min-height: 49%; //??
 }
 
 .nameText {
@@ -20,6 +21,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
+  min-width: 50px;
 }
 
 .PopoverContent {
