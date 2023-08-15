@@ -1,0 +1,25 @@
+.instance {
+  display: flex;
+  min-height: 120px;
+  height: 120px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #121a21;
+}
+.instanceCurrent {
+  @extend .instance;
+  border-bottom: 1px solid #fcc81c;
+  border-left: 8px solid #fcc81c;
+}
+
+.rightsideHolder {
+  display: flex;
+  flex-direction: column;
+  min-width: 0px;
+  flex: 1;
+}
+
+.bottomRowHolder {
+  display: flex;
+  flex-direction: row;
+  flex: 0.5;
+}
