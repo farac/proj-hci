@@ -3,7 +3,7 @@ import Head from "next/head";
 import styles from "@/styles/Index.module.scss";
 import Header from "@/components/header";
 import Sidepane from "@/components/sidepane";
-import IntiativeEntries from "@/components/initiativeEntries";
+import IntiativeEntriesList from "@/components/initiativeEntriesList";
 
 export default function Home() {
   return (
@@ -18,7 +18,7 @@ export default function Home() {
           <div className={styles.scrollables}>
             <Header></Header>
             <div className={styles.entryContainer}>
-              <IntiativeEntries></IntiativeEntries>
+              <IntiativeEntriesList sessionId={0}></IntiativeEntriesList>
             </div>
           </div>
         </div>
