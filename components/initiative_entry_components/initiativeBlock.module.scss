@@ -16,3 +16,152 @@
   flex-shrink: 0;
   margin-right: 20px;
 }
+
+.PopoverContent {
+  border-radius: 4px;
+  padding: 20px;
+  width: 240px;
+  background-color: #121a21;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+    hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+// .PopoverContent:focus {
+//   box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px,
+//     hsl(206 22% 7% / 20%) 0px 10px 20px -15px, 0 0 0 2px #719cac;
+// }
+.PopoverContent[data-state="open"][data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+.PopoverContent[data-state="open"][data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+.PopoverContent[data-state="open"][data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+.PopoverContent[data-state="open"][data-side="left"] {
+  animation-name: slideRightAndFade;
+}
+
+.PopoverArrow {
+  fill: #121a21;
+}
+
+.PopoverClose {
+  border: none;
+  background-color: #121a21;
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #121a21;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.PopoverClose:hover {
+  background-color: #3e4a56;
+}
+.PopoverClose:focus {
+  box-shadow: 0 0 0 2px #3e4a56;
+}
+
+.IconButton {
+  font-family: inherit;
+  border-radius: 100%;
+  height: 25px;
+  width: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #719cac;
+  background-color: #121a21;
+}
+.IconButton:hover {
+  background-color: #3e4a56;
+}
+.IconButton:focus {
+  box-shadow: 0 0 0 2px black;
+}
+
+.Input {
+  width: 40%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-family: "Palanquin", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  font-size: 18px;
+  line-height: 1;
+  color: #719cac;
+  box-shadow: 0 0 0 1px #719cac;
+  height: 25px;
+  background-color: #19252f;
+  outline: none;
+}
+.Input:focus {
+  box-shadow: 0 0 0 2px #719cac;
+  outline: none;
+}
+
+.Text {
+  font-family: "Roboto Slab", serif;
+  font-size: 20px;
+  line-height: 1;
+  color: #719cac;
+  margin: 0;
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
