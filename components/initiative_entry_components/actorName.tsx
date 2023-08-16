@@ -15,7 +15,7 @@ export default function ActorName({
   entryId: number;
 }) {
   const [name, setName] = useState<string>("");
-  const [nameEditing, setNameEdited] = useState<string>("");
+  const [nameEditing, setNameEditing] = useState<string>("");
 
   useEffect(() => {
     const nameRef = ref(
@@ -30,13 +30,12 @@ export default function ActorName({
 
   function onEditName(newName: string) {
     if (newName && name != newName) {
-      console.log(newName);
       const entryRef = ref(
         database,
         "sessions/" + sessionId + "/entries/" + entryId
       );
       update(entryRef, { name: newName });
-      setNameEdited("");
+      setNameEditing("");
     }
   }
 
@@ -60,7 +59,7 @@ export default function ActorName({
                 className={styles.Input}
                 id="width"
                 defaultValue={name}
-                onChange={(e) => setNameEdited(e.target.value)}
+                onChange={(e) => setNameEditing(e.target.value)}
               />
             </div>
             <Popover.Close className={styles.PopoverClose} aria-label="Close">
