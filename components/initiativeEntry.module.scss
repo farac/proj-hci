@@ -21,5 +21,6 @@
 .bottomRowHolder {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   flex: 0.5;
 }

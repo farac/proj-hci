@@ -37,7 +37,7 @@ export default function HealthHolder({
       const val = snapshot.val();
       setMaxHp(val);
     });
-  });
+  }, []);
 
   function onEditHp(newCurrentHp: string, newMaxHp: string) {
     if (isNaN(Number(newCurrentHp)) || isNaN(Number(newMaxHp))) {

@@ -27,7 +27,7 @@ export default function InitiativeBlock({
       const val = snapshot.val();
       setInitiativeRoll(val);
     });
-  });
+  }, []);
 
   function onEditInitiativeRoll(newRoll: string) {
     if (isNaN(Number(newRoll))) {

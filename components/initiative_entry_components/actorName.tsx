@@ -26,7 +26,7 @@ export default function ActorName({
       const val = snapshot.val();
       setName(val);
     });
-  });
+  }, []);
 
   function onEditName(newName: string) {
     if (newName && name != newName) {
