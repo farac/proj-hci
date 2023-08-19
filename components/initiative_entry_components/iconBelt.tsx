@@ -41,7 +41,7 @@ export default function IconBelt({
   }
 
   function isInConditionsArray(condition: string) {
-    return conditionsEditing.some((c) => c === condition);
+    return conditionsEditing && conditionsEditing.some((c) => c === condition);
   }
 
   function editConditionsEArray(condition: string) {
@@ -56,16 +56,19 @@ export default function IconBelt({
       "sessions/" + sessionId + "/entries/" + entryId + "/conditions"
     );
     onValue(conditionsRef, (snapshot) => {
-      const val: string[] = snapshot.val();
+      let val: string[] = snapshot.val();
+      if (!val) val = [];
       val.sort().reverse();
       setConditions(val);
       setConditionsEditing(val);
-      console.log(val);
     });
   }, []);
 
   function onEditConditions(newConditions: string[]) {
-    if (true) {
+    if (
+      newConditions &&
+      JSON.stringify(newConditions) !== JSON.stringify(conditions)
+    ) {
       const toPush = newConditions.reduce(
         (acc: Record<number, string>, condition, index) => {
           acc[index] = condition;
@@ -73,19 +76,17 @@ export default function IconBelt({
         },
         {}
       );
-      console.log(toPush);
       const conditionsRef = ref(
         database,
         "sessions/" + sessionId + "/entries/" + entryId + "/conditions"
       );
       set(conditionsRef, toPush);
-      // setConditionsEditing(newConditions); /* ne triba jer listener */
     }
   }
 
   const conditionsList: ReactNode[] = [];
 
-  if (conditions != null) {
+  if (conditions.length != 0) {
     conditions.forEach((condition, index) => {
       if (statuses.includes(condition)) {
         conditionsList.push(
@@ -116,6 +117,22 @@ export default function IconBelt({
         );
       }
     });
+  } else {
+    conditionsList.push(
+      <Tooltip.Provider key="default">
+        <Tooltip.Root>
+          <Tooltip.Trigger asChild>
+            <Image key="default" src={Icons.AddCondition} alt=""></Image>
+          </Tooltip.Trigger>
+          <Tooltip.Portal>
+            <Tooltip.Content className={styles.tooltipContent} sideOffset={5}>
+              Click to add condition
+              <Tooltip.Arrow className={styles.tooltipArrow} />
+            </Tooltip.Content>
+          </Tooltip.Portal>
+        </Tooltip.Root>
+      </Tooltip.Provider>
+    );
   }
 
   return (
