@@ -122,7 +122,33 @@ export default function IconBelt({
       <Tooltip.Provider key="default">
         <Tooltip.Root>
           <Tooltip.Trigger asChild>
-            <Image key="default" src={Icons.AddCondition} alt=""></Image>
+            <svg
+              className={styles.addConditionSvg}
+              width="48"
+              height="48"
+              viewBox="0 0 48 48"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                className={styles.addConditionIcon}
+                d="M12 24H24M36 24H24M24 24V12M24 24V36"
+                stroke="#FFF5F6"
+                stroke-opacity="0.5"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <rect
+                className={styles.addConditionIcon}
+                x="0.5"
+                y="0.5"
+                width="47"
+                height="47"
+                stroke="#FFF5F6"
+                stroke-opacity="0.5"
+              />
+            </svg>
           </Tooltip.Trigger>
           <Tooltip.Portal>
             <Tooltip.Content className={styles.tooltipContent} sideOffset={5}>

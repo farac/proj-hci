@@ -36,3 +36,52 @@
   padding-bottom: 0px;
   size: 48px;
 }
+
+.SwitchRoot {
+  width: 42px;
+  height: 25px;
+  //background-color: #121a21;
+  background-color: #719cac;
+  //border-color: #719cac;
+  border-color: #3d556a;
+  border-radius: 9999px;
+  position: relative;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+// .SwitchRoot:focus {
+//   box-shadow: 0 0 0 1px #719cac;
+// }
+.SwitchRoot[data-state="checked"] {
+  background-color: #e25549;
+  //background-color: #719cac;
+}
+
+.SwitchThumb {
+  display: block;
+  width: 21px;
+  height: 21px;
+  //background-color: #719cac;
+  background-color: #121a21;
+  border-radius: 9999px;
+  transition: transform 100ms;
+  transform: translateX(2px);
+  will-change: transform;
+}
+.SwitchThumb[data-state="checked"] {
+  transform: translateX(19px);
+}
+
+.Label {
+  color: #719cac;
+  text-align: left;
+  font-family: "Exo 2", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.LabelDeleteMode {
+  @extend .Label;
+  color: #e25549;
+}

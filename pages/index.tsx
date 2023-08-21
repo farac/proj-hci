@@ -1,11 +1,18 @@
 "use client";
+import { useState } from "react";
 import Head from "next/head";
-import styles from "@/styles/Index.module.scss";
+import styles from "@/styles/index.module.scss";
 import Header from "@/components/header";
 import Sidepane from "@/components/sidepane";
 import IntiativeEntriesList from "@/components/initiativeEntriesList";
 
 export default function Home() {
+  const [deleteModeActive, setDeleteModeActive] = useState<boolean>(false);
+
+  function handleDeleteSwitch(val: boolean) {
+    setDeleteModeActive(val);
+  }
+
   return (
     <>
       <Head>
@@ -17,12 +24,18 @@ export default function Home() {
         <div className={styles.appBoundingBox}>
           <div className={styles.scrollables}>
             <Header></Header>
-            <div className={styles.entryContainer}>
-              <IntiativeEntriesList sessionId={0}></IntiativeEntriesList>
-            </div>
+            {/* <div className={styles.entryContainer}> */}
+            <IntiativeEntriesList
+              sessionId={0}
+              deleteModeActive={deleteModeActive}
+            ></IntiativeEntriesList>
+            {/* </div> */}
           </div>
         </div>
-        <Sidepane></Sidepane>
+        <Sidepane
+          deleteModeActive={deleteModeActive}
+          handleDeleteSwitch={handleDeleteSwitch}
+        ></Sidepane>
       </div>
     </>
   );

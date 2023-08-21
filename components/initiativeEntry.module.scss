@@ -11,6 +11,18 @@
   border-left: 8px solid #fcc81c;
 }
 
+.wrapper {
+  position: relative;
+}
+
+.wrapper:hover .deleteOverlay {
+  @extend .instance;
+  position: absolute;
+  width: 99999999px;
+  opacity: 20%;
+  background-color: #e25549;
+}
+
 .rightsideHolder {
   display: flex;
   flex-direction: column;
