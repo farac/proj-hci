@@ -134,10 +134,10 @@ export default function IconBelt({
                 className={styles.addConditionIcon}
                 d="M12 24H24M36 24H24M24 24V12M24 24V36"
                 stroke="#FFF5F6"
-                stroke-opacity="0.5"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeOpacity="0.5"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
               <rect
                 className={styles.addConditionIcon}
@@ -146,7 +146,7 @@ export default function IconBelt({
                 width="47"
                 height="47"
                 stroke="#FFF5F6"
-                stroke-opacity="0.5"
+                strokeOpacity="0.5"
               />
             </svg>
           </Tooltip.Trigger>

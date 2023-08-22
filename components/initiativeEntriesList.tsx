@@ -30,6 +30,7 @@ export default function IntiativeEntriesList({
     onValue(usedIndexesRef, (snapshot) => {
       const val = snapshot.val();
       setUsedIndexes(val);
+      console.log(val);
     });
   }, []);
 
@@ -92,28 +93,28 @@ export default function IntiativeEntriesList({
               className={styles.addEntryIcon}
               d="M49.5835 29.1667H58.3335M67.0835 29.1667H58.3335M58.3335 29.1667V20.4167M58.3335 29.1667V37.9167"
               stroke="#FFF5F6"
-              stroke-opacity="0.5"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity="0.5"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               className={styles.addEntryIcon}
               d="M2.9165 58.3333V42C2.9165 38.134 6.0505 35 9.9165 35H36.7498C40.6158 35 43.7498 38.134 43.7498 42V58.3333"
               stroke="#FFF5F6"
-              stroke-opacity="0.5"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity="0.5"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
             <path
               className={styles.addEntryIcon}
               d="M23.3332 35C29.7765 35 34.9998 29.7767 34.9998 23.3334C34.9998 16.89 29.7765 11.6667 23.3332 11.6667C16.8898 11.6667 11.6665 16.89 11.6665 23.3334C11.6665 29.7767 16.8898 35 23.3332 35Z"
               stroke="#FFF5F6"
-              stroke-opacity="0.5"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeOpacity="0.5"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         </div>
