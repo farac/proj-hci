@@ -35,8 +35,8 @@ export default function IntiativeEntriesList({
   }, []);
 
   function getFirstAvailIndex() {
-    const rval = usedIndexes.findIndex((num, index) => {
-      if (num !== index) {
+    const rval = usedIndexes.findIndex((num) => {
+      if (num === undefined) {
         return true;
       }
     });
