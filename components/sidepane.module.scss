@@ -37,6 +37,22 @@
   size: 48px;
 }
 
+.sortButton {
+  color: #719cac;
+  text-align: left;
+  font-family: "Exo 2", sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  background-color: #121a21;
+  border: none;
+}
+.sortButton:hover {
+  color: #c3dbe5;
+}
+
 .SwitchRoot {
   width: 42px;
   height: 25px;
@@ -79,6 +95,10 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.Label:hover {
+  color: #c3dbe5;
 }
 
 .LabelDeleteMode {

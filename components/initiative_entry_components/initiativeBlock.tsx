@@ -10,9 +10,11 @@ import styles from "@/components/initiative_entry_components/initiativeBlock.mod
 export default function InitiativeBlock({
   sessionId,
   entryId,
+  onInitiativeChanged,
 }: {
   sessionId: number;
   entryId: number;
+  onInitiativeChanged: Function;
 }) {
   const [initiativeRoll, setInitiativeRoll] = useState<number>(20);
   const [initiativeRollEditing, setInitiativeRollEditing] =
@@ -25,6 +27,7 @@ export default function InitiativeBlock({
     );
     onValue(initiativeRollRef, (snapshot) => {
       const val = snapshot.val();
+      onInitiativeChanged(entryId, val);
       setInitiativeRoll(val);
     });
   }, []);
@@ -42,6 +45,7 @@ export default function InitiativeBlock({
         "sessions/" + sessionId + "/entries/" + entryId
       );
       update(entryRef, { initiative_roll: newRoll });
+      onInitiativeChanged(entryId, newRoll);
       setInitiativeRollEditing("");
     }
   }

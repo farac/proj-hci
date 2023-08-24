@@ -13,10 +13,12 @@ export default function InitiativeEntry({
   sessionId,
   entryId,
   deleteModeActive,
+  onInitiativeChanged,
 }: {
   sessionId: number;
   entryId: number;
   deleteModeActive: boolean;
+  onInitiativeChanged: Function;
 }) {
   const [isCurrentTurn, setCurrentTurn] = useState<boolean>(false);
 
@@ -54,7 +56,11 @@ export default function InitiativeEntry({
         key={entryId}
         className={isCurrentTurn ? styles.instanceCurrent : styles.instance}
       >
-        <InitiativeBlock sessionId={0} entryId={entryId}></InitiativeBlock>
+        <InitiativeBlock
+          sessionId={0}
+          entryId={entryId}
+          onInitiativeChanged={onInitiativeChanged}
+        ></InitiativeBlock>
         <div className={styles.rightsideHolder}>
           <ActorName sessionId={0} entryId={entryId}></ActorName>
           <div className={styles.bottomRowHolder}>

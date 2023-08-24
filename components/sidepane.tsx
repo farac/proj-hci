@@ -3,13 +3,16 @@ import * as Switch from "@radix-ui/react-switch";
 
 import styles from "@/components/sidepane.module.scss";
 import TurnButtonImg from "../public/next-turn-button.svg";
+import { MouseEventHandler } from "react";
 
 export default function Sidepane({
   deleteModeActive,
   handleDeleteSwitch,
+  handleSort,
 }: {
   deleteModeActive: boolean;
   handleDeleteSwitch: Function;
+  handleSort: Function;
 }) {
   return (
     <div className={styles.sidepaneBox}>
@@ -38,7 +41,11 @@ export default function Sidepane({
             </div>
           </form>
         </li>
-        <li>JOIN SESSION</li>
+        <li>
+          <button className={styles.sortButton} onClick={(e) => handleSort(e)}>
+            SORT ENTRIES
+          </button>
+        </li>
         <li>SHARE LINK</li>
       </ul>
       <Image className={styles.turnButton} src={TurnButtonImg} alt="" />
