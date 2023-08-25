@@ -18,12 +18,10 @@ export default function IntiativeEntriesList({
   sessionId,
   deleteModeActive,
   entriesSorted,
-  initiativeChanged,
 }: {
   sessionId: number;
   deleteModeActive: boolean;
   entriesSorted: boolean;
-  initiativeChanged: Function;
 }) {
   const [usedIndexes, setUsedIndexes] = useState<number[]>([]);
   const [indexInitMap, setIndexInitMap] = useState(new Map<number, number>());
@@ -85,13 +83,12 @@ export default function IntiativeEntriesList({
   }
 
   function onInitiativeChanged(index: number, init_roll: number) {
-    //console.log("current prije promjene map:" + [...indexInitMap.entries()]);
     if (init_roll != null) {
       console.log(index + " je rolla " + init_roll);
       const newMap = indexInitMap;
       newMap.set(index, init_roll);
       setIndexInitMap(newMap);
-      initiativeChanged();
+      sortMapByInit();
     }
   }
 
@@ -103,13 +100,12 @@ export default function IntiativeEntriesList({
   }
 
   const listEntries: ReactNode[] = [];
-  // if (entriesSorted) {
-  console.log("entries sorted ulazin u sort");
-  console.log("current prije sorta map" + [...indexInitMap.entries()]);
+  //console.log("entries sorted ulazin u sort");
+  //console.log("current prije sorta map" + [...indexInitMap.entries()]);
   const sorted = new Map<number, number>(
     [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
   );
-  console.log("nakon sorta map" + [...sorted.entries()]);
+  //console.log("nakon sorta map" + [...sorted.entries()]);
   sorted.forEach((val, key) => {
     listEntries.push(
       <InitiativeEntry
@@ -121,20 +117,6 @@ export default function IntiativeEntriesList({
       ></InitiativeEntry>
     );
   });
-  // } else {
-  //   //todo: fix me, build local array of properties with all firebase "listeners"
-  //   usedIndexes.forEach((val) => {
-  //     listEntries.push(
-  //       <InitiativeEntry
-  //         key={val}
-  //         sessionId={0}
-  //         entryId={val}
-  //         deleteModeActive={deleteModeActive}
-  //         onInitiativeChanged={onInitiativeChanged}
-  //       ></InitiativeEntry>
-  //     );
-  //   });
-  // }
 
   return (
     <div>

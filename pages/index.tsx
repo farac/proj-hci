@@ -19,13 +19,6 @@ export default function Home() {
     }
   }
 
-  function initiativeChanged() {
-    if (entriesSorted) {
-      console.log("sorted false");
-      setEntriesSorted(false);
-    }
-  }
-
   return (
     <>
       <Head>
@@ -42,7 +35,6 @@ export default function Home() {
               sessionId={0}
               deleteModeActive={deleteModeActive}
               entriesSorted={entriesSorted}
-              initiativeChanged={initiativeChanged}
             ></IntiativeEntriesList>
             {/* </div> */}
           </div>

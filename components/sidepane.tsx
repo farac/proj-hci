@@ -42,11 +42,14 @@ export default function Sidepane({
           </form>
         </li>
         <li>
-          <button className={styles.sortButton} onClick={(e) => handleSort(e)}>
-            SORT ENTRIES
+          <button
+            className={styles.placeholderButton}
+            onClick={(e) => handleSort(e)}
+          >
+            PLACEHOLDER
           </button>
         </li>
-        <li>SHARE LINK</li>
+        <button className={styles.placeholderButton}>SHARE LINK</button>
       </ul>
       <Image className={styles.turnButton} src={TurnButtonImg} alt="" />
     </div>
