@@ -135,14 +135,20 @@ export default function IntiativeEntriesList({
     const sorted = new Map<number, number>(
       [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
     );
-    setIndexInitMap(sorted);
+
+    const mapsAreEqual = (m1: Map<number, number>, m2: Map<number, number>) =>
+      m1.size === m2.size &&
+      Array.from(m1.keys()).every((key) => m1.get(key) === m2.get(key));
+
+    if (!mapsAreEqual(indexInitMap, sorted)) {
+      setIndexInitMap(sorted);
+    }
   }
 
   function handleTurnReport(entryId: number) {
     indexCurrentTurn.current = entryId;
     console.log("aaa" + indexCurrentTurn);
   }
-
   // indexCurrentTurn = currentTurnIndex;
   // if (indexCurrentTurn != -1) {
   //   console.log("aaa" + indexCurrentTurn);
@@ -151,11 +157,13 @@ export default function IntiativeEntriesList({
   const listEntries: ReactNode[] = [];
   //console.log("entries sorted ulazin u sort");
   //console.log("current prije sorta map" + [...indexInitMap.entries()]);
-  const sorted = new Map<number, number>(
-    [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
-  );
-  //console.log("nakon sorta map" + [...sorted.entries()]);
-  sorted.forEach((val, key) => {
+  // const sorted = new Map<number, number>(
+  //   [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
+  // );
+  // console.log([...indexInitMap.entries()]);
+  sortMapByInit();
+  console.log("nakon sorta map" + [...indexInitMap.entries()]);
+  indexInitMap.forEach((val, key) => {
     listEntries.push(
       <InitiativeEntry
         key={key}
