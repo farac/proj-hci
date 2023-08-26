@@ -1,5 +1,5 @@
-import { useEffect, useState, ReactNode } from "react";
-import { ref, onValue, update, DatabaseReference } from "firebase/database";
+import { useEffect, useState, ReactNode, useRef } from "react";
+import { ref, onValue, update } from "firebase/database";
 import { database } from "@/firebaseConfig";
 
 import styles from "@/components/initiativeEntriesList.module.scss";
@@ -14,17 +14,26 @@ const pIsCurrentTurn: boolean = false;
 const pMaxHp: string = "10";
 const pName: string = "Edit me!";
 
+const NO_CURRENT_TURN_INDEX = -1;
+
 export default function IntiativeEntriesList({
   sessionId,
   deleteModeActive,
-  entriesSorted,
-}: {
+  shouldAdvanceTurn,
+  turnChangeDone,
+}: // setIndexCurrentTurn,
+// currentTurnIndex,
+{
   sessionId: number;
   deleteModeActive: boolean;
-  entriesSorted: boolean;
+  shouldAdvanceTurn: boolean;
+  turnChangeDone: Function;
+  // setIndexCurrentTurn: Function;
+  // currentTurnIndex: number;
 }) {
   const [usedIndexes, setUsedIndexes] = useState<number[]>([]);
   const [indexInitMap, setIndexInitMap] = useState(new Map<number, number>());
+  let indexCurrentTurn = useRef<number>(NO_CURRENT_TURN_INDEX);
   const usedIndexesRef = ref(
     database,
     "sessions/" + sessionId + "/used_indexes"
@@ -52,6 +61,36 @@ export default function IntiativeEntriesList({
       console.log(val);
     });
   }, []);
+
+  useEffect(() => {
+    if (shouldAdvanceTurn) {
+      let newCurrentIndex: number | undefined;
+      const revInitMap = new Map([...indexInitMap].reverse());
+
+      let prev: number;
+      revInitMap.forEach((val, key) => {
+        if (indexCurrentTurn.current == key) {
+          newCurrentIndex = prev;
+        }
+        prev = key;
+      });
+
+      if (newCurrentIndex === undefined)
+        newCurrentIndex = indexInitMap.keys().next().value;
+
+      console.log(
+        "epic turn change logic new current to set:" + newCurrentIndex
+      );
+      const entriesRef = ref(database, "sessions/" + sessionId + "/entries/");
+
+      const updates: Partial<Record<string, object | number>> = {};
+      updates[indexCurrentTurn.current + "/is_current_turn"] = false;
+      updates[newCurrentIndex + "/is_current_turn"] = true;
+      update(entriesRef, updates);
+
+      turnChangeDone();
+    }
+  }, [shouldAdvanceTurn, turnChangeDone]);
 
   function getFirstAvailIndex() {
     const rval = usedIndexes.findIndex((num) => {
@@ -99,6 +138,16 @@ export default function IntiativeEntriesList({
     setIndexInitMap(sorted);
   }
 
+  function handleTurnReport(entryId: number) {
+    indexCurrentTurn.current = entryId;
+    console.log("aaa" + indexCurrentTurn);
+  }
+
+  // indexCurrentTurn = currentTurnIndex;
+  // if (indexCurrentTurn != -1) {
+  //   console.log("aaa" + indexCurrentTurn);
+  // }
+
   const listEntries: ReactNode[] = [];
   //console.log("entries sorted ulazin u sort");
   //console.log("current prije sorta map" + [...indexInitMap.entries()]);
@@ -114,6 +163,7 @@ export default function IntiativeEntriesList({
         entryId={key}
         deleteModeActive={deleteModeActive}
         onInitiativeChanged={onInitiativeChanged}
+        reportCurrentTurn={handleTurnReport}
       ></InitiativeEntry>
     );
   });

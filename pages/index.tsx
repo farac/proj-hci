@@ -7,16 +7,19 @@ import IntiativeEntriesList from "@/components/initiativeEntriesList";
 
 export default function Home() {
   const [deleteModeActive, setDeleteModeActive] = useState<boolean>(false);
-  const [entriesSorted, setEntriesSorted] = useState<boolean>(false);
+  const [shouldAdvanceInit, setShouldAdvanceInit] = useState<boolean>(false);
+
   function handleDeleteSwitch(val: boolean) {
     setDeleteModeActive(val);
   }
 
-  function handleSort() {
-    if (!entriesSorted) {
-      console.log("sorted true");
-      setEntriesSorted(true);
-    }
+  function setNextTurn() {
+    console.log("should rotate init now");
+    if (!shouldAdvanceInit) setShouldAdvanceInit(true);
+  }
+  function turnChangeDone() {
+    console.log("done rotating init");
+    if (shouldAdvanceInit) setShouldAdvanceInit(false);
   }
 
   return (
@@ -34,13 +37,14 @@ export default function Home() {
             <IntiativeEntriesList
               sessionId={0}
               deleteModeActive={deleteModeActive}
-              entriesSorted={entriesSorted}
+              shouldAdvanceTurn={shouldAdvanceInit}
+              turnChangeDone={turnChangeDone}
             ></IntiativeEntriesList>
             {/* </div> */}
           </div>
         </div>
         <Sidepane
-          handleSort={handleSort}
+          handleChangeTurn={setNextTurn}
           deleteModeActive={deleteModeActive}
           handleDeleteSwitch={handleDeleteSwitch}
         ></Sidepane>

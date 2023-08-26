@@ -14,11 +14,13 @@ export default function InitiativeEntry({
   entryId,
   deleteModeActive,
   onInitiativeChanged,
+  reportCurrentTurn,
 }: {
   sessionId: number;
   entryId: number;
   deleteModeActive: boolean;
   onInitiativeChanged: Function;
+  reportCurrentTurn: Function;
 }) {
   const [isCurrentTurn, setCurrentTurn] = useState<boolean>(false);
 
@@ -30,6 +32,10 @@ export default function InitiativeEntry({
     onValue(currentTurnRef, (snapshot) => {
       const val = snapshot.val();
       setCurrentTurn(val);
+      if (val) {
+        console.log("setting current turn is " + entryId);
+        reportCurrentTurn(entryId);
+      }
     });
   }, []);
 
@@ -43,6 +49,9 @@ export default function InitiativeEntry({
       database,
       "sessions/" + sessionId + "/used_indexes/" + entryId
     );
+
+    //if (isCurrentTurn) reportCurrentTurn(-1);
+
     await remove(entryRef);
     await remove(usedIndexRef);
   }
