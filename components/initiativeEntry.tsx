@@ -33,14 +33,12 @@ export default function InitiativeEntry({
       const val = snapshot.val();
       setCurrentTurn(val);
       if (val) {
-        console.log("setting current turn is " + entryId);
         reportCurrentTurn(entryId);
       }
     });
   }, []);
 
   async function handleEntryDelete() {
-    console.log("clic" + entryId);
     const entryRef = ref(
       database,
       "sessions/" + sessionId + "/entries/" + entryId

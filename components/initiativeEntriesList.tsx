@@ -58,7 +58,6 @@ export default function IntiativeEntriesList({
       });
 
       setUsedIndexes(val);
-      console.log(val);
     });
   }, []);
 
@@ -78,9 +77,6 @@ export default function IntiativeEntriesList({
       if (newCurrentIndex === undefined)
         newCurrentIndex = indexInitMap.keys().next().value;
 
-      console.log(
-        "epic turn change logic new current to set:" + newCurrentIndex
-      );
       const entriesRef = ref(database, "sessions/" + sessionId + "/entries/");
 
       const updates: Partial<Record<string, object | number>> = {};
@@ -123,7 +119,6 @@ export default function IntiativeEntriesList({
 
   function onInitiativeChanged(index: number, init_roll: number) {
     if (init_roll != null) {
-      console.log(index + " je rolla " + init_roll);
       const newMap = indexInitMap;
       newMap.set(index, init_roll);
       setIndexInitMap(newMap);
@@ -147,22 +142,10 @@ export default function IntiativeEntriesList({
 
   function handleTurnReport(entryId: number) {
     indexCurrentTurn.current = entryId;
-    console.log("aaa" + indexCurrentTurn);
   }
-  // indexCurrentTurn = currentTurnIndex;
-  // if (indexCurrentTurn != -1) {
-  //   console.log("aaa" + indexCurrentTurn);
-  // }
 
   const listEntries: ReactNode[] = [];
-  //console.log("entries sorted ulazin u sort");
-  //console.log("current prije sorta map" + [...indexInitMap.entries()]);
-  // const sorted = new Map<number, number>(
-  //   [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
-  // );
-  // console.log([...indexInitMap.entries()]);
   sortMapByInit();
-  console.log("nakon sorta map" + [...indexInitMap.entries()]);
   indexInitMap.forEach((val, key) => {
     listEntries.push(
       <InitiativeEntry

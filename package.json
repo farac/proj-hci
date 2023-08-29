@@ -13,6 +13,7 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-switch": "^1.0.3",
     "@radix-ui/react-tooltip": "^1.0.6",
+    "@rooks/use-window-size": "^4.11.2",
     "@svgr/webpack": "^8.1.0",
     "@types/node": "20.4.10",
     "@types/react": "18.2.20",
@@ -24,6 +25,7 @@
     "next": "13.4.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-responsive": "^9.0.2",
     "react-tooltip": "^5.20.0",
     "typescript": "5.1.6"
   },

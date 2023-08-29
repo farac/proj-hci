@@ -14,11 +14,9 @@ export default function Home() {
   }
 
   function setNextTurn() {
-    console.log("should rotate init now");
     if (!shouldAdvanceInit) setShouldAdvanceInit(true);
   }
   function turnChangeDone() {
-    console.log("done rotating init");
     if (shouldAdvanceInit) setShouldAdvanceInit(false);
   }
 
@@ -43,11 +41,13 @@ export default function Home() {
             {/* </div> */}
           </div>
         </div>
-        <Sidepane
-          handleChangeTurn={setNextTurn}
-          deleteModeActive={deleteModeActive}
-          handleDeleteSwitch={handleDeleteSwitch}
-        ></Sidepane>
+        {
+          <Sidepane
+            handleChangeTurn={setNextTurn}
+            deleteModeActive={deleteModeActive}
+            handleDeleteSwitch={handleDeleteSwitch}
+          ></Sidepane>
+        }
       </div>
     </>
   );
