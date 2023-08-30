@@ -1,0 +1,28 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: normal;
+}
+
+.pageBox {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  align-content: stretch;
+  height: 100vh;
+}
+
+.appBoundingBox {
+  min-height: 100%;
+  min-width: 0;
+  flex-grow: 1;
+}
+
+.scrollables {
+  overflow-y: auto;
+  width: 100%;
+  max-height: 100vh;
+}
