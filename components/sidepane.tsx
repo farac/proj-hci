@@ -1,4 +1,3 @@
-import Image from "next/image";
 import * as Switch from "@radix-ui/react-switch";
 
 import styles from "@/components/sidepane.module.scss";
