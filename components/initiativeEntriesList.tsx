@@ -79,7 +79,7 @@ export default function IntiativeEntriesList({
 
       const entriesRef = ref(database, "sessions/" + sessionId + "/entries/");
 
-      const updates: Partial<Record<string, object | number>> = {};
+      const updates: Partial<Record<string, object | boolean>> = {};
       updates[indexCurrentTurn.current + "/is_current_turn"] = false;
       updates[newCurrentIndex + "/is_current_turn"] = true;
       update(entriesRef, updates);

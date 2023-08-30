@@ -15,21 +15,21 @@
     "@radix-ui/react-tooltip": "^1.0.6",
     "@rooks/use-window-size": "^4.11.2",
     "@svgr/webpack": "^8.1.0",
-    "@types/node": "20.4.10",
-    "@types/react": "18.2.20",
+    "@types/node": "20.5.7",
+    "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "clsx": "^2.0.0",
-    "eslint": "8.47.0",
-    "eslint-config-next": "13.4.13",
-    "firebase": "^10.1.0",
-    "next": "13.4.13",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "firebase": "^10.3.0",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-responsive": "^9.0.2",
-    "react-tooltip": "^5.20.0",
-    "typescript": "5.1.6"
+    "react-tooltip": "^5.21.1",
+    "typescript": "5.2.2"
   },
   "devDependencies": {
-    "sass": "^1.64.2"
+    "sass": "^1.66.1"
   }
 }
