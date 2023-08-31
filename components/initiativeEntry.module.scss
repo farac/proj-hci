@@ -35,6 +35,14 @@
   background-color: #e25549;
 }
 
+.wrapper:hover .deleteOverlayMobile {
+  @extend .instanceMobile;
+  position: absolute;
+  width: 99999999px;
+  opacity: 20%;
+  background-color: #e25549;
+}
+
 .rightsideHolder {
   display: flex;
   flex-direction: column;

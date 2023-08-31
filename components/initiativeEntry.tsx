@@ -72,7 +72,12 @@ export default function InitiativeEntry({
   return (
     <div className={styles.wrapper}>
       {deleteModeActive && (
-        <div className={styles.deleteOverlay} onClick={handleEntryDelete} />
+        <div
+          className={
+            isMobile() ? styles.deleteOverlayMobile : styles.deleteOverlay
+          }
+          onClick={handleEntryDelete}
+        />
       )}
       <li
         key={entryId}
