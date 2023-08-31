@@ -10,6 +10,18 @@
   border-bottom: 1px solid #fcc81c;
   border-left: 8px solid #fcc81c;
 }
+.instanceMobile {
+  display: flex;
+  min-height: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #121a21;
+}
+.instanceCurrentMobile {
+  @extend .instanceMobile;
+  border-bottom: 1px solid #fcc81c;
+  border-left: 6px solid #fcc81c;
+}
 
 .wrapper {
   position: relative;

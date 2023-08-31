@@ -12,6 +12,20 @@
   margin-left: auto;
 }
 
+.sidepaneBoxMobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #121a21;
+  height: 80px;
+  flex-shrink: 0;
+  margin-left: auto;
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+  left: 0px;
+}
+
 .menuList {
   display: flex;
   flex-direction: column;
@@ -29,6 +43,12 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.menuListMobile {
+  @extend .menuList;
+  flex-direction: row;
+  padding: 0;
+  align-items: center;
 }
 
 .turnButton {
@@ -57,6 +77,11 @@
   color: #c3dbe5;
 }
 
+.SwitchDiv {
+  display: "flex";
+  align-items: "center";
+}
+
 .SwitchRoot {
   width: 42px;
   height: 25px;
@@ -71,6 +96,12 @@
 // .SwitchRoot:focus {
 //   box-shadow: 0 0 0 1px #719cac;
 // }
+
+.SwitchRootMobile {
+  @extend .SwitchRoot;
+  bottom: 18px;
+}
+
 .SwitchRoot[data-state="checked"] {
   background-color: #e25549;
   //background-color: #719cac;
@@ -108,4 +139,8 @@
 .LabelDeleteMode {
   @extend .Label;
   color: #e25549;
+}
+
+.trashIcon {
+  padding-left: 5px;
 }

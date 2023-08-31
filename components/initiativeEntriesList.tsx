@@ -5,6 +5,7 @@ import { database } from "@/firebaseConfig";
 import styles from "@/components/initiativeEntriesList.module.scss";
 
 import InitiativeEntry from "./initiativeEntry";
+import useWindowSize from "./useWindowSize";
 
 const pConditions: number[] = [];
 const pCurrentHp: string = "10";
@@ -34,10 +35,19 @@ export default function IntiativeEntriesList({
   const [usedIndexes, setUsedIndexes] = useState<number[]>([]);
   const [indexInitMap, setIndexInitMap] = useState(new Map<number, number>());
   let indexCurrentTurn = useRef<number>(NO_CURRENT_TURN_INDEX);
+  let canChangeTurn = useRef<boolean>(true);
   const usedIndexesRef = ref(
     database,
     "sessions/" + sessionId + "/used_indexes"
   );
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
+
   useEffect(() => {
     onValue(usedIndexesRef, (snapshot) => {
       const val: number[] = snapshot.val();
@@ -131,11 +141,15 @@ export default function IntiativeEntriesList({
       [...indexInitMap.entries()].sort((a, b) => b[1] - a[1])
     );
 
-    const mapsAreEqual = (m1: Map<number, number>, m2: Map<number, number>) =>
-      m1.size === m2.size &&
-      Array.from(m1.keys()).every((key) => m1.get(key) === m2.get(key));
+    const arr2 = Array.from(sorted.entries());
+    const mapsAreEqual = Array.from(indexInitMap.entries()).every(
+      ([key, value], index) => {
+        const [key2, value2] = arr2[index];
+        return key === key2 && value === value2;
+      }
+    );
 
-    if (!mapsAreEqual(indexInitMap, sorted)) {
+    if (!mapsAreEqual) {
       setIndexInitMap(sorted);
     }
   }
@@ -161,9 +175,14 @@ export default function IntiativeEntriesList({
 
   return (
     <div>
-      <ol className={styles.list}>{listEntries}</ol>
+      <ol className={isMobile() ? styles.listMobile : styles.list}>
+        {listEntries}
+      </ol>
       {!deleteModeActive && (
-        <div className={styles.addEntry} onClick={handleAddEntryClick}>
+        <div
+          className={isMobile() ? styles.addEntryMobile : styles.addEntry}
+          onClick={handleAddEntryClick}
+        >
           <svg
             width="70"
             height="70"

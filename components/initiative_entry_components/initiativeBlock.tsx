@@ -6,6 +6,7 @@ import * as Popover from "@radix-ui/react-popover";
 
 import * as ExitIcon from "@/public/cancel.svg";
 import styles from "@/components/initiative_entry_components/initiativeBlock.module.scss";
+import useWindowSize from "../useWindowSize";
 
 export default function InitiativeBlock({
   sessionId,
@@ -19,6 +20,14 @@ export default function InitiativeBlock({
   const [initiativeRoll, setInitiativeRoll] = useState<number>(20);
   const [initiativeRollEditing, setInitiativeRollEditing] =
     useState<string>("");
+
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
 
   useEffect(() => {
     const initiativeRollRef = ref(
@@ -53,7 +62,13 @@ export default function InitiativeBlock({
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
-        <p className={styles.initiativeBlock}>{initiativeRoll}</p>
+        <p
+          className={
+            isMobile() ? styles.initiativeBlockMobile : styles.initiativeBlock
+          }
+        >
+          {initiativeRoll}
+        </p>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content

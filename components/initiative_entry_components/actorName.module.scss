@@ -25,6 +25,11 @@
   min-width: 50px;
 }
 
+.nameTextMobile {
+  @extend .nameText;
+  font-size: 24px;
+}
+
 .PopoverContent {
   border-radius: 4px;
   padding: 20px;

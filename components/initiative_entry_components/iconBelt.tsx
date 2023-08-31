@@ -9,12 +9,19 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import * as CheckIcon from "@/public/check.svg";
 import Icons from "../../public/conditions/importCondIcons";
 import styles from "@/components/initiative_entry_components/iconBelt.module.scss";
+import useWindowSize from "../useWindowSize";
 
 const prone: string = "Prone";
 const deaf: string = "Deaf";
 const blind: string = "Blind";
 
 const statuses: string[] = [prone, deaf, blind];
+
+const ConditionsToMobileIconMap = {
+  Prone: Icons.ProneMobile,
+  Deaf: Icons.DeafMobile,
+  Blind: Icons.BlindMobile,
+};
 
 const ConditionToIconMap = {
   Prone: Icons.Prone,
@@ -31,6 +38,13 @@ export default function IconBelt({
 }) {
   const [conditions, setConditions] = useState<string[]>([]);
   const [conditionsEditing, setConditionsEditing] = useState<string[]>([]);
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
 
   function appendToConditionsE(condition: string) {
     setConditionsEditing((prev) => [...prev, condition]);
@@ -96,9 +110,13 @@ export default function IconBelt({
                 <Image
                   key={index}
                   src={
-                    ConditionToIconMap[
-                      condition as keyof typeof ConditionToIconMap
-                    ]
+                    isMobile()
+                      ? ConditionsToMobileIconMap[
+                          condition as keyof typeof ConditionsToMobileIconMap
+                        ]
+                      : ConditionToIconMap[
+                          condition as keyof typeof ConditionToIconMap
+                        ]
                   }
                   alt=""
                 ></Image>
@@ -124,15 +142,19 @@ export default function IconBelt({
           <Tooltip.Trigger asChild>
             <svg
               className={styles.addConditionSvg}
-              width="48"
-              height="48"
-              viewBox="0 0 48 48"
+              width={isMobile() ? "30" : "48"}
+              height={isMobile() ? "30" : "48"}
+              viewBox={isMobile() ? "0 0 31 31" : "0 0 48 48"}
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 className={styles.addConditionIcon}
-                d="M12 24H24M36 24H24M24 24V12M24 24V36"
+                d={
+                  isMobile()
+                    ? "M8 16H16M24 16H16M16 16V8M16 16V24"
+                    : "M12 24H24M36 24H24M24 24V12M24 24V36"
+                }
                 stroke="#FFF5F6"
                 strokeOpacity="0.5"
                 strokeWidth="1.5"
@@ -143,8 +165,8 @@ export default function IconBelt({
                 className={styles.addConditionIcon}
                 x="0.5"
                 y="0.5"
-                width="47"
-                height="47"
+                width={isMobile() ? "30" : "47"}
+                height={isMobile() ? "30" : "47"}
                 stroke="#FFF5F6"
                 strokeOpacity="0.5"
               />
@@ -160,6 +182,23 @@ export default function IconBelt({
       </Tooltip.Provider>
     );
   }
+
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8 16H16M24 16H16M16 16V8M16 16V24"
+      stroke="#719CAC"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <rect x="0.5" y="0.5" width="31" height="31" stroke="#719CAC" />
+  </svg>;
 
   return (
     <DropdownMenu.Root>

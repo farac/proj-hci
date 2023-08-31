@@ -6,6 +6,7 @@ import * as Popover from "@radix-ui/react-popover";
 
 import * as ExitIcon from "@/public/cancel.svg";
 import styles from "@/components/initiative_entry_components/healthHolder.module.scss";
+import useWindowSize from "../useWindowSize";
 
 export default function HealthHolder({
   sessionId,
@@ -19,6 +20,14 @@ export default function HealthHolder({
 
   const [currentHpEditing, setCurrentHpEditing] = useState<string>("");
   const [maxHpEditing, setMaxHpEditing] = useState<string>("");
+
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
 
   useEffect(() => {
     const currentHpRef = ref(
@@ -61,22 +70,45 @@ export default function HealthHolder({
     }
   }
 
+  function getCurrentHpStyle(
+    isMobile: boolean,
+    currentHp: number,
+    maxHp: number
+  ) {
+    if (isMobile) {
+      return currentHp / maxHp > 1
+        ? styles.hpCurrentTempHpMobile
+        : currentHp / maxHp < 0.5
+        ? styles.hpCurrentBloodiedMobile
+        : styles.hpCurrentDefaultMobile;
+    } else {
+      return currentHp / maxHp > 1
+        ? styles.hpCurrentTempHp
+        : currentHp / maxHp < 0.5
+        ? styles.hpCurrentBloodied
+        : styles.hpCurrentDefault;
+    }
+  }
+
   return (
     <Popover.Root>
       <Popover.Trigger asChild>
         <div className={styles.healthHolder}>
           <p
             className={
-              currentHp / maxHp > 1
+              getCurrentHpStyle(isMobile(), currentHp, maxHp)
+              /*               currentHp / maxHp > 1
                 ? styles.hpCurrentTempHp
                 : currentHp / maxHp < 0.5
                 ? styles.hpCurrentBloodied
-                : styles.hpCurrentDefault
+                : styles.hpCurrentDefault */
             }
           >
             {currentHp}
           </p>
-          <p className={styles.hpMax}>/{maxHp}</p>
+          <p className={isMobile() ? styles.hpMaxMobile : styles.hpMax}>
+            /{maxHp}
+          </p>
         </div>
       </Popover.Trigger>
       <Popover.Portal>

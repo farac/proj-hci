@@ -15,6 +15,10 @@
   height: 100vh;
 }
 
+.pageBoxMobile {
+  flex-direction: column;
+}
+
 .appBoundingBox {
   min-height: 100%;
   min-width: 0;
@@ -25,4 +29,9 @@
   overflow-y: auto;
   width: 100%;
   max-height: 100vh;
+}
+
+.scrollablesMobile {
+  @extend .scrollables;
+  padding-bottom: 80px;
 }

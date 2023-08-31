@@ -8,6 +8,12 @@
   overflow-x: clip;
 }
 
+.listMobile {
+  @extend .list;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .addEntry {
   @extend .list;
   border: 1px solid rgba(255, 245, 246, 0.5);
@@ -15,6 +21,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
+}
+
+.addEntryMobile {
+  @extend .listMobile;
+  border: 1px solid rgba(255, 245, 246, 0.5);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
 .addEntry:hover {
@@ -22,6 +39,14 @@
 }
 
 .addEntry:hover .addEntryIcon {
+  stroke-opacity: 0.866;
+}
+
+.addEntryMobile:active {
+  border: 1px solid rgba(255, 245, 246, 0.866);
+}
+
+.addEntryMobile:active .addEntryIcon {
   stroke-opacity: 0.866;
 }
 

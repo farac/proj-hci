@@ -6,6 +6,7 @@ import * as Popover from "@radix-ui/react-popover";
 
 import * as ExitIcon from "@/public/cancel.svg";
 import styles from "@/components/initiative_entry_components/actorName.module.scss";
+import useWindowSize from "../useWindowSize";
 
 export default function ActorName({
   sessionId,
@@ -16,6 +17,13 @@ export default function ActorName({
 }) {
   const [name, setName] = useState<string>("");
   const [nameEditing, setNameEditing] = useState<string>("");
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
 
   useEffect(() => {
     const nameRef = ref(
@@ -43,7 +51,9 @@ export default function ActorName({
     <div className={styles.holder}>
       <Popover.Root>
         <Popover.Trigger asChild>
-          <p className={styles.nameText}>{name}</p>
+          <p className={isMobile() ? styles.nameTextMobile : styles.nameText}>
+            {name}
+          </p>
         </Popover.Trigger>
         <Popover.Portal>
           <Popover.Content

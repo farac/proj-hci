@@ -8,6 +8,7 @@ import IconBelt from "./initiative_entry_components/iconBelt";
 import HealthHolder from "./initiative_entry_components/healthHolder";
 import InitiativeBlock from "./initiative_entry_components/initiativeBlock";
 import ActorName from "./initiative_entry_components/actorName";
+import useWindowSize from "./useWindowSize";
 
 export default function InitiativeEntry({
   sessionId,
@@ -23,6 +24,13 @@ export default function InitiativeEntry({
   reportCurrentTurn: Function;
 }) {
   const [isCurrentTurn, setCurrentTurn] = useState<boolean>(false);
+  const screenWidth = useWindowSize().width;
+  function isMobile() {
+    if (screenWidth) {
+      return screenWidth < 780;
+    }
+    return false;
+  }
 
   useEffect(() => {
     const currentTurnRef = ref(
@@ -30,13 +38,20 @@ export default function InitiativeEntry({
       "sessions/" + sessionId + "/entries/" + entryId + "/is_current_turn"
     );
     onValue(currentTurnRef, (snapshot) => {
-      const val = snapshot.val();
+      const val: boolean = snapshot.val();
       setCurrentTurn(val);
       if (val) {
         reportCurrentTurn(entryId);
       }
     });
   }, []);
+
+  function getStyleForEntry(isCurrentTurn: boolean, isMobile: boolean) {
+    if (isMobile && isCurrentTurn) return styles.instanceCurrentMobile;
+    if (isMobile && !isCurrentTurn) return styles.instanceMobile;
+    if (!isMobile && isCurrentTurn) return styles.instanceCurrent;
+    else return styles.instance;
+  }
 
   async function handleEntryDelete() {
     const entryRef = ref(
@@ -61,7 +76,12 @@ export default function InitiativeEntry({
       )}
       <li
         key={entryId}
-        className={isCurrentTurn ? styles.instanceCurrent : styles.instance}
+        className={
+          /* isCurrentTurn ? styles.instanceCurrent : styles.instance */ getStyleForEntry(
+            isCurrentTurn,
+            isMobile()
+          )
+        }
       >
         <InitiativeBlock
           sessionId={0}

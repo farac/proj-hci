@@ -15,7 +15,16 @@
   font-size: 48px;
   font-weight: 500;
   line-height: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+.headerTextMobile {
+  @extend .headerText;
+  font-size: 36px;
+}
+
 .headerTextContainer {
   display: flex;
   justify-content: center;
