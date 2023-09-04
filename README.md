@@ -1,38 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Count me in!
 
-## Getting Started
+Hosted on Vercel.
 
-First, run the development server:
+Database hosted on Firebase, using realtime database solution.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Low Fidelity mockups
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Made with Figma
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### Wireframe view of interface:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+![Main_page_wireframe](images_report\main_page_wireframe.jpg)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Wireframe view of mobile interface:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+![Main_page_wireframe_mobile](images_report\main_page_wireframe_mobile.jpg)
 
-## Learn More
+## High Fidelity mockups and design materials:
 
-To learn more about Next.js, take a look at the following resources:
+### Selected color palette:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Node: addional shades of some colors were used for contrast.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![Palette](images_report\palette.png)
 
-## Deploy on Vercel
+### Desktop mockup:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![Main_page](images_report\main_page.jpg)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Mobile mockup:
+
+![Main_page_mobile](images_report\main_page_mobile.jpg)
+
+## Final product:
+
+Some slight differences from design documents can be seen, however good amount of consistency between what was planned and what was done.
+
+### Desktop screenshot, as deployed:
+
+Changes from design version: some slight adjustments to fonts etc., different system for deletion of entries.
+
+![Final](images_report\final.png)
+
+### Mobile screenshot, as deployed:
+
+Changes from design version: smaller entries, can display bigger number on screen. Different deletion system.
+
+![Final_mobile](images_report\final_mobile.png)
+
+## Used tools:
+
+Fonts paired using [AI-driven tool](https://huemint.com/website-2/).
+
+Color palette roughtly [selected using AI-driven tool](https://huemint.com/website-2/). Additional refinement by hand.
+
+## Metrics:
+
+### Google PageSpeed results:
+
+![PageSpeed](images_report\PageSpeed.png)
+
+Desktop results are good. Performance results are adequate (given realiance on realtime database updates for rendering) even on simulated throttled connection. No data is stored locally, so first load will be expected to be slower, but the desktop version of the site handles it rather well.
+
+![PageSpeed_mobile](images_report\PageSpeed_mobile.png)
+
+Mobile results are considerably worse. The first load takes much longer, due to the aforementioned Firebase database. This could perhaps be improved by choosing some other hosting solution (the free tier of hosting is limited in some ways) or exploring some other design choices that don't involve relying too much on a remote database not under our control. Additionally, the layout shift is rather high, likely due to the detection and switching to mobile mode.
+
+Overall accessability could be improved on both versions, but for such a specialised niche tool, this results can be considered adequate.
+
+## Details from the design:
+
+### Higlights on button mouseover:
+
+![highlights](images_report\highlights.gif)
+
+### Tooltips on mouseover of some elements:
+
+![tooltips](images_report\tooltip.gif)
+
+### Contextual clues when delete mode is enabled:
+
+![delete](images_report\delete.gif)
+
+### Simple, tooltip based editing dialogues:
+
+![delete](images_report\editing.gif)
+
+### Automatic sorting of entries by initiative count:
+
+![sorting](images_report\sorting.gif)
